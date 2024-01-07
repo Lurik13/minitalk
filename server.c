@@ -5,19 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 12:02:30 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/07 19:02:21 by lribette         ###   ########.fr       */
+/*   Created: 2024/01/07 21:29:51 by lribette          #+#    #+#             */
+/*   Updated: 2024/01/07 23:28:30 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+char	*str = NULL;
+
+void	ft_print(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	write(1, "\n", 1);
+	str = NULL;
+	//free(str);
+}
+
 void	signal_handler(int signal)
 {
+	static int	i = 0;
+	static int	octet = 0;
+	int			sig;
+
 	if (signal == SIGUSR1)
-		ft_printf("1");
+		sig = 1;
 	else if (signal == SIGUSR2)
-		ft_printf("0");
+		sig = 0;
+	if (i < 8)
+	{
+		octet = octet * 2 + sig;
+		i++;
+	}
+	if (i == 8)
+	{
+		if (octet == 0)
+			ft_print(str);
+		str = ft_strjoin(str, octet);
+		i = 0;
+		octet = 0;
+	}
+	
 }
 
 int main (void)
@@ -30,10 +65,6 @@ int main (void)
 	signal(SIGUSR2, &signal_handler);
 	while (1)
 	{
-		ft_printf("\n");
-		sleep(1);
+		sleep(100);
 	}
 }
-/*
-int sigaction(int signum, const struct sigaction *restrict act,
-              struct sigaction *restrict oldact);*/

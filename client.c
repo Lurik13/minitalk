@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 13:31:03 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/07 19:01:03 by lribette         ###   ########.fr       */
+/*   Created: 2024/01/07 21:31:34 by lribette          #+#    #+#             */
+/*   Updated: 2024/01/07 23:23:06 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	send_str(int argv, char *str)
 		send_char(argv, str[i]);
 		i++;
 	}
+    send_char(argv, '\0');
 }
 
 int	main(int argc, char **argv)
