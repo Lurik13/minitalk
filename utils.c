@@ -6,7 +6,7 @@
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 14:44:24 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/07 14:54:36 by lribette         ###   ########.fr       */
+/*   Updated: 2024/01/07 18:46:00 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(char *str)
 	exit(1);
 }
 
-void	check_pid(char *str)
+int	check_pid(char *str)
 {
 	int	i;
 	int	number;
@@ -42,4 +42,17 @@ void	check_pid(char *str)
 	}
 	if (str[i])
 		ft_error("Not an int");
+	return (number * nega);
+}
+
+void	ft_bzero(void *src, size_t n)
+{
+	char	*dest;
+
+	dest = src;
+	while (n)
+	{
+		*dest++ = 0;
+		n--;
+	}
 }

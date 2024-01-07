@@ -6,35 +6,38 @@
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 13:31:03 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/07 16:34:30 by lribette         ###   ########.fr       */
+/*   Updated: 2024/01/07 19:01:03 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	send_char(int argc, char c)
+static void	send_char(int argv, char c)
 {
 	int	i;
 
 	i = 128;
 	while (i)
 	{
+		ft_printf("%d", !!(c & i));
 		if (c & i)
-			kill(argc, SIGUSR1);
+			kill(argv, SIGUSR1);
 		else
-			kill(argc, SIGUSR2);
+			kill(argv, SIGUSR2);
+		usleep(100);
 		i >>= 1;
 	}
+	ft_printf("\n");
 }
 
-static void	send_str(int argc, char *str)
+static void	send_str(int argv, char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		send_char(argc, str[i]);
+		send_char(argv, str[i]);
 		i++;
 	}
 }
@@ -46,6 +49,6 @@ int	main(int argc, char **argv)
 	else
 	{
 		check_pid(argv[1]);
-		send_str(argc, argv[2]);
+		send_str(check_pid(argv[1]), argv[2]);
 	}
 }

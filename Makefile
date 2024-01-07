@@ -6,14 +6,14 @@
 #    By: lribette <lribette@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 11:49:18 by lribette          #+#    #+#              #
-#    Updated: 2024/01/07 16:40:42 by lribette         ###   ########.fr        #
+#    Updated: 2024/01/07 17:51:55 by lribette         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SERVER = server
 CLIENT = client
 
-SERVER_SOURCES = server.c
+SERVER_SOURCES = server.c utils.c
 CLIENT_SOURCES = client.c utils.c
 PRINTF = ft_printf/libftprintf.a
 
