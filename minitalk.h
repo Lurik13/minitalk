@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 12:02:30 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/07 16:33:28 by lribette         ###   ########.fr       */
+/*   Created: 2024/01/07 13:59:35 by lribette          #+#    #+#             */
+/*   Updated: 2024/01/07 16:34:19 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-int main (void)
-{
-	pid_t	id;
+#include <sys/types.h>
+#include <signal.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "./ft_printf/ft_printf.h"
 
-	id = getpid();
-	ft_printf("PID: %i\n", id);
-	while (1)
-	{
-		sleep(5);
-	}
-}
+void	ft_error(char *str);
+void	check_pid(char *str);
+
+#endif
