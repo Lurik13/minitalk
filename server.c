@@ -6,27 +6,26 @@
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:29:51 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/07 23:28:30 by lribette         ###   ########.fr       */
+/*   Updated: 2024/01/08 10:55:52 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	*str = NULL;
+char	*g_str = NULL;
 
-void	ft_print(char *str)
+void	ft_print(void)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (g_str[i])
 	{
-		write(1, &str[i], 1);
+		write(1, &g_str[i], 1);
 		i++;
 	}
 	write(1, "\n", 1);
-	str = NULL;
-	//free(str);
+	g_str = NULL;
 }
 
 void	signal_handler(int signal)
@@ -47,15 +46,14 @@ void	signal_handler(int signal)
 	if (i == 8)
 	{
 		if (octet == 0)
-			ft_print(str);
-		str = ft_strjoin(str, octet);
+			ft_print();
+		g_str = ft_strjoin(g_str, octet);
 		i = 0;
 		octet = 0;
 	}
-	
 }
 
-int main (void)
+int	main(void)
 {
 	pid_t	id;
 

@@ -6,7 +6,7 @@
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 14:44:24 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/07 23:20:03 by lribette         ###   ########.fr       */
+/*   Updated: 2024/01/08 10:57:46 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_calloc(int nbelem, int size)
 
 char	*ft_strjoin(char *s1, char c)
 {
-	int	i;
+	int		i;
 	char	*str;
 
 	i = 0;

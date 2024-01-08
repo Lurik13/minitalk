@@ -6,7 +6,7 @@
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:31:34 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/07 23:23:06 by lribette         ###   ########.fr       */
+/*   Updated: 2024/01/08 10:50:34 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@ static void	send_char(int argv, char c)
 	i = 128;
 	while (i)
 	{
-		ft_printf("%d", !!(c & i));
 		if (c & i)
 			kill(argv, SIGUSR1);
 		else
 			kill(argv, SIGUSR2);
-		usleep(100);
+		usleep(300);
 		i >>= 1;
 	}
-	ft_printf("\n");
 }
 
 static void	send_str(int argv, char *str)
@@ -40,7 +38,7 @@ static void	send_str(int argv, char *str)
 		send_char(argv, str[i]);
 		i++;
 	}
-    send_char(argv, '\0');
+	send_char(argv, '\0');
 }
 
 int	main(int argc, char **argv)
