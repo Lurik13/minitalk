@@ -6,7 +6,7 @@
 /*   By: lribette <lribette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:29:51 by lribette          #+#    #+#             */
-/*   Updated: 2024/01/08 10:55:52 by lribette         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:21:39 by lribette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_print(void)
 	int	i;
 
 	i = 0;
-	while (g_str[i])
+	while (g_str && g_str[i])
 	{
 		write(1, &g_str[i], 1);
 		i++;
